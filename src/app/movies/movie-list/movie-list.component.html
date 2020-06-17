@@ -1,0 +1,23 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-1 col-md-2 padding" *ngFor="let mv of movies">
+                <img class="base" src="{{mv.poster}}" alt="" (click)="view(mv.imdbID)">
+        </div>
+
+    </div>
+</div>
+
+<ng-template #template>
+    <div >
+        <img class="card" src="{{movie.poster}}">
+
+        <div class="container">
+            <h4><p>{{movie.title}} ({{movie.year}})</p></h4>
+        </div>
+
+        <div class="container">
+            <p>{{movie.plot}}</p>
+        </div>
+    </div>
+
+</ng-template>

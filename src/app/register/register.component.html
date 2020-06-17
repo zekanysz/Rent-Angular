@@ -25,6 +25,9 @@
                 <div *ngIf="passwordConfirm.touched && passwordConfirm.errors?.required" class="alert alert-danger">
                     This field is required!
                 </div>
+                <div *ngIf="passwordConfirm.touched && passwordConfirm.errors?.mustMatch" class="alert alert-danger">
+                    Password must match!
+                </div>
                 <button type="submit" class="btn btn-primary">Register</button>
             </form>
         </div>
