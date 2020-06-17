@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { ManageMoviesComponent } from './manage-movies/manage-movies.component';
+import { ManageUsersComponent } from './manage-users/manage-users.component';
 
 
 const routes: Routes = [];
@@ -16,6 +17,7 @@ const routes: Routes = [];
   { path: 'Login', component: LoginComponent },
   { path: 'Register', component:  RegisterComponent },
   { path: 'ManageMovies', component:  ManageMoviesComponent },
+  { path: 'ManageUsers', component:  ManageUsersComponent },
   { path: '**', redirectTo:'/Home' }
   ])],
   exports: [RouterModule]

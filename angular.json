@@ -125,5 +125,8 @@
       }
     }
   },
-  "defaultProject": "MovieRentAngular"
+  "defaultProject": "MovieRentAngular",
+  "cli": {
+    "analytics": false
+  }
 }

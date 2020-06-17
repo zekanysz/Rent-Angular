@@ -1,1 +1,73 @@
-<p>manage-users works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+      <form [formGroup]="addRoleForm" (ngSubmit)="addRole()">
+        <div class="form-group">
+          <!-- <label for="newRole">New Role</label> -->
+          <h5 class="text-center">New Role</h5>
+          <input type="text" class="form-control" formControlName="newrole" />
+        </div>
+
+        <div class="center">
+        <button type="submit" class="btn btn-primary btn-width">Add</button>
+      </div>
+      </form>
+    </div>
+    <div class="col-lg-4"></div>
+  </div>
+</div>
+
+
+<div class="container-fluid">
+
+  <div class="row ">
+    <div class="col-lg-3"></div>
+
+    <div class="col-lg-6">
+      <div class="margin-top-20"></div>
+    <hr>
+
+    </div>
+    <div class="col-lg-3"></div>
+
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+      <form [formGroup]="addRoleToUserForm" (ngSubmit)="addRoleToUser()">
+        <!-- <div class="form-group">
+                <label for="newRole">Choose Role</label>
+                <select name="role" id="role"></select>
+                <input type="text" class="form-control" formControlName="role">
+              </div> -->
+
+        <div class="form-group">
+          <h5 class="text-center">Add new role to user</h5>
+          <select formControlName="user" class="form-control">
+            <option value="" disabled>Choose a user</option>
+
+            <option *ngFor="let user of users" [value]="user">{{
+              user
+            }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <select formControlName="role" class="form-control">
+            <option value="" disabled>Choose a role</option>
+            <option *ngFor="let role of roles" [ngValue]="role">{{
+              role
+            }}</option>
+          </select>
+        </div>
+
+        <div class="center">
+        <button type="submit" class="btn btn-primary btn-width">Add</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-lg-4"></div>
+  </div>
+</div>
