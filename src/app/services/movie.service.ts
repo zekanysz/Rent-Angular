@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Movie } from '../interfaces/movie';
-import { shareReplay } from 'rxjs/operators';
+import { shareReplay, flatMap, first } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +20,8 @@ export class MovieService {
   constructor(private http: HttpClient) { }
 
   // Admin
-  addMovie(title){
-    return  this.http.post(this.addMoviePathUrl + title, null);
+  addMovie(imdbId){
+    return  this.http.post(this.addMoviePathUrl + imdbId, null);
   }
 
   // User
@@ -29,12 +29,12 @@ export class MovieService {
     if(!this.movies$){
       this.movies$ = this.http.get<Movie[]>(this.getAllMoviesUrl).pipe(shareReplay());
     }
+    console.log(this.movies$);
     return this.movies$;
   }
 
-  getMovieByImdbId(ImdbId) : Observable<Movie>{
-    this.movie$ = this.http.get<Movie>(this.getMovieByImdbIdUrl + ImdbId).pipe(shareReplay());
-    return this.movie$;
+  getMovieById(id :number) : Observable<Movie>{
+    return this.getMovies().pipe(flatMap(result => result), first(movie => movie.id == id));
   }
 
   get currentToken(){

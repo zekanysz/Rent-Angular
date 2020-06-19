@@ -3,6 +3,7 @@ import { MovieService } from 'src/app/services/movie.service';
 import { Movie } from 'src/app/interfaces/movie';
 import { Observable } from 'rxjs';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-movie-list',
@@ -12,16 +13,17 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 export class MovieListComponent implements OnInit {
 
 
-  @ViewChild('template') modal : TemplateRef<any>;
+  // @ViewChild('template') modal : TemplateRef<any>;
   modalRef: BsModalRef;
 
   movies: Movie[] = []; 
   movies$ : Observable<Movie[]>;
 
+  selectedMovie: Movie;
   movie: Movie;
   movie$: Observable<Movie>;
 
-  constructor(private movieService: MovieService, private modalService: BsModalService) { }
+  constructor(private movieService: MovieService, private modalService: BsModalService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -37,12 +39,17 @@ export class MovieListComponent implements OnInit {
     this.movieService.getMovies();
   }
 
-  view(id){
-    this.modalRef = this.modalService.show(this.modal);
-    this.movie$ = this.movieService.getMovieByImdbId(id);
-    this.movie$.subscribe(result => {
-      this.movie = result;
-    });
-
+  select(movie: Movie){
+    this.selectedMovie = movie;
+    this.router.navigateByUrl("/Movies/" + movie.id);
   }
+
+  // view(id){
+  //   this.modalRef = this.modalService.show(this.modal);
+  //   this.movie$ = this.movieService.getMovieByImdbId(id);
+  //   this.movie$.subscribe(result => {
+  //     this.movie = result;
+  //   });
+
+  // }
 }

@@ -55,6 +55,13 @@ export class ManageUsersComponent implements OnInit {
     this.userService.addRole(this.addRoleForm.value.newrole).subscribe(response => {
       console.log(response);
     });
+
+    this.roles$ = this.userService.getRoles();
+
+    this.roles$.subscribe(result => {
+      this.roles = result;
+      console.log(this.roles);
+    });
   }
 
   addRoleToUser(){
