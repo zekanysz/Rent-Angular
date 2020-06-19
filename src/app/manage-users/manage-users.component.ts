@@ -41,41 +41,31 @@ export class ManageUsersComponent implements OnInit {
       console.log(this.roles);
     });
 
-
     this.users$ = this.userService.getUsers();
 
     this.users$.subscribe(result => {
       this.users = result;
       console.log(this.users);
     });
-
   }
 
   addRole(){
-    this.userService.addRole(this.addRoleForm.value.newrole).subscribe(response => {
-      console.log(response);
-    });
+    this.userService.addRole(this.addRoleForm.value.newrole);
 
     this.roles$ = this.userService.getRoles();
 
     this.roles$.subscribe(result => {
       this.roles = result;
-      console.log(this.roles);
     });
+
+    this.addRoleForm.reset();
   }
 
   addRoleToUser(){
-
-    console.log(this.addRoleToUserForm.value.user);
-    console.log(this.addRoleToUserForm.value.role);
-
     this.userToRole = new UserToRole(this.addRoleToUserForm.value.user, this.addRoleToUserForm.value.role);
 
-    console.log(this.userToRole.user);
-    console.log(this.userToRole.role);
+    this.userService.addRoleToUser(this.userToRole);
 
-    this.userService.addRoleToUser(this.userToRole).subscribe(response => {
-      console.log(response);
-    });
+    this.addRoleToUserForm.reset();
   }
 }

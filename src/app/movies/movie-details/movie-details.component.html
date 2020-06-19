@@ -1,31 +1,44 @@
-<!-- <div class="filtered img-container"> -->
-<!-- <img class="img-poster" src="https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/{{movie.backdrop_path}}"> -->
-<!-- <div>
-        <img src="https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/{{movie.poster_path}}">
-    </div>
-</div> -->
-
-<!-- 
-<img class="img-poster" src="https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/{{movie.backdrop_path}}">
-<img class="image2"src="https://image.tmdb.org/t/p/w342/{{movie.poster_path}}"> -->
-
-
 <div>
-
     <div class="filtered img-container">
-        <img class="img-poster" src="https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/{{movie.backdrop_path}}">
+        <img class="img-poster" src="{{backImgUrl}}">
     </div>
     <div>
-
-        <img class="image2" src="https://image.tmdb.org/t/p/w342/{{movie.poster_path}}">
+        <img class="image" src="{{posterImgUrl}}">
         <div class="content">
             <div>
-                <h2><span class="title">{{movie.original_title}}
-                    </span><span>({{movie.release_date | slice:0:4}})</span></h2>
+                <h2>
+                    <span class="title">{{movie.original_title}}&nbsp;</span>
+                    <span>({{movie.release_date | slice:0:4}})</span>
+                </h2>
             </div>
             <div>
-                {{movie.release_date | date:'dd/MM/yyyy'}}
+                <span>{{movie.release_date | date:'dd/MM/yyyy'}} </span>
+                <span>(</span>
+                <span *ngFor="let genre of movie.production_countries; let isLast=last">{{genre.iso_3166_1}}{{isLast ? '' : ', '}}</span>
+                <span>)</span>
+                <span>&nbsp;&nbsp;</span>
+                <span class="dot"></span>
+                <span>&nbsp;&nbsp;</span>
+                <span *ngFor="let genre of movie.genres; let isLast=last">{{genre.name}}{{isLast ? '' : ', '}}</span>
+                <span>&nbsp;&nbsp;</span>
+                <span class="dot"></span>
+                <span>&nbsp;&nbsp;</span>
+                <span>{{hour}}h </span><span>{{minute}}m </span>
             </div>
+            <div class="tagline">
+                <span>{{movie.tagline}}</span>
+            </div>
+            <div>
+                <h3 class="overview-title">Overview</h3>
+                <p>{{movie.overview}}</p>
+            </div>
+            <div>
+                <ol>
+                    <li *ngFor=""></li>
+                </ol>
+            </div>
+
+
         </div>
     </div>
 </div>

@@ -1,40 +1,42 @@
-
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     max-width: 200px;
-    height: 450px;
+    height: 420px;
     margin: 15px;
     border-radius: 10px;
-  }
-  .poster{
+}
+
+.poster {
     width: 100%;
     cursor: pointer;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-  }
+}
 
-  p{
+p {
     width: 200px;
     margin: 0;
-    padding:10px 10px 0px 10px;
+    padding: 10px 10px 0px 10px;
     font-size: 0.9rem;
     vertical-align: middle;
     font-family: Segoe UI;
+}
 
-  }
-
-  p.thick {
+p.thick {
     font-weight: bold;
     white-space: nowrap;
     overflow: hidden;
     word-wrap: break-word;
     white-space: initial;
     /* font-size:  105% */
-  }
-  p.date{
-    color:#A9A9A9	
-  }
-  /* p.bottom-float{
+}
+
+p.date {
+    color: #A9A9A9
+}
+
+
+/* p.bottom-float{
     position:absolute;
     bottom:0;
   } */

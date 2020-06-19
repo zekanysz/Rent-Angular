@@ -13,7 +13,10 @@ export class MovieDetailsComponent implements OnInit {
 
 
   @Input() movie: Movie;
-  img:string;
+  posterImgUrl: string
+  backImgUrl: string;
+  hour: number;
+  minute: number;
   background: string;
 
 
@@ -21,14 +24,28 @@ export class MovieDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     let id = + this.route.snapshot.params['id'];
-    let base = new String("https://image.tmdb.org/t/p/w1920_and_h800_multi_faces");
+    let backBase = new String("https://image.tmdb.org/t/p/w1920_and_h800_multi_faces");
+    let posterBase = new String("https://image.tmdb.org/t/p/w342");
+
 
     this.movieService.getMovieById(id).subscribe(result => {
-      this.movie = result; 
-      this.img = base.concat(this.movie.backdrop_path.toString());
+      this.movie = result;
+      this.getTimeDifference(this.movie.runtime);
+      this.backImgUrl = backBase.concat(this.movie.backdrop_path.toString());
+      this.posterImgUrl = posterBase.concat(this.movie.poster_path.toString());
+
       // this.background= this.sanitizer.bypassSecurityTrustStyle(`url(${base.concat(this.movie.backdrop_path.toString())}) no-repeat`);
     });
 
+  }
+
+  getTimeDifference(timestampDifference) {
+    let temp = timestampDifference * 60;
+    const hours = Math.floor((temp / 3600));
+    this.hour = hours;
+    const minutes = timestampDifference - hours * 60;;
+    this.minute = minutes
+    console.log(hours + 'h' + minutes + 'm');
   }
 
 }
