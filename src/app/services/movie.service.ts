@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Movie } from '../interfaces/movie';
+import { Credits } from '../interfaces/credits';
 import { shareReplay, flatMap, first } from 'rxjs/operators';
 
 @Injectable({
@@ -12,10 +13,13 @@ export class MovieService {
 
   private addMoviePathUrl = environment.apiUrl + '/Movie/Add/';
   private getAllMoviesUrl = environment.apiUrl + '/Movie/AllMovies';
-  private getMovieByImdbIdUrl  = environment.apiUrl + '/Movie/GetMovieByImdbId/';
+  private getAllCreditsUrl = environment.apiUrl + '/Movie/AllCredits';
 
   private movies$: Observable<Movie[]>;
   private movie$: Observable<Movie>;
+
+  private creditsAll$: Observable<Credits[]>;
+  private credits$: Observable<Credits>;
 
   constructor(private http: HttpClient) { }
 
@@ -37,12 +41,27 @@ export class MovieService {
     return this.getMovies().pipe(flatMap(result => result), first(movie => movie.id == id));
   }
 
+
+  getAllCredits() : Observable<Credits[]>{
+    if(!this.creditsAll$){
+      this.creditsAll$ = this.http.get<Credits[]>(this.getAllCreditsUrl).pipe(shareReplay());
+    }
+    console.log(this.creditsAll$);
+    return this.creditsAll$;
+  }
+
+  getCreditsById(id: number) :Observable<Credits>{
+    return this.getAllCredits().pipe(flatMap(result => result), first(creditsAll => creditsAll.id == id));
+  }
+
   get currentToken(){
     return this.movies$;
   }
 
   clearCache(){
     this.movies$ = null;
+    this.creditsAll$ = null;
+
   }
 
 }

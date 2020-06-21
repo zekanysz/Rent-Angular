@@ -33,7 +33,7 @@
     position: absolute;
     width: 50%;
     height: 40%;
-    margin: 5% 50% 0 35%;
+    margin: 1% 50% 0 35%;
     /*top, right, bottom, left */
     z-index: 3;
     color: white;
@@ -64,4 +64,36 @@
 .overview-title {
     font-weight: 700;
     font-size: 1.3rem;
+}
+.it{
+    z-index:3; color: white;
+}
+
+/* .nameAndJob{
+    width: 100px;
+        overflow: hidden;
+    word-wrap: break-word;
+    white-space: initial;
+} */
+
+ul {
+    list-style-type:none;
+    padding: 5px;
+    margin-right: 7%;
+    display: inline-block;
+}
+.name{
+    font-weight: bold;
+}
+
+.job{
+    font-style: italic;
+}
+.cast{
+  z-index: inherit 7;
+}
+
+.nomargin{
+margin:0px;
+padding:0px;
 }
