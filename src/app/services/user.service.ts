@@ -24,13 +24,11 @@ export class UserService {
   }
 
   addRoleToUser(userToRole){
-    return  this.http.post(this.addRoleToUserPathUrl, userToRole);
+    return  this.http.post(this.addRoleToUserPathUrl, userToRole).subscribe();
   }
 
   getRoles() : Observable<string[]>{
-    if(!this.roles$){
       this.roles$ = this.http.get<string[]>(this.getAllRolesUrl).pipe(shareReplay());
-    }
     return this.roles$;
   }
 

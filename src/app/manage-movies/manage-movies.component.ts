@@ -21,9 +21,7 @@ export class ManageMoviesComponent implements OnInit {
   addMovie(){
     this.movieService.addMovie(this.addMovieForm.value.title).subscribe(response => {
       console.log(response);
-
     });
     this.addMovieForm.reset();
-
   }
 }

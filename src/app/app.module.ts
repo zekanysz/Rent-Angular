@@ -15,6 +15,8 @@ import { ManageMoviesComponent } from './manage-movies/manage-movies.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 
@@ -27,7 +29,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HomeComponent,
     ManageMoviesComponent,
     ManageUsersComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -36,6 +37,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     BrowserAnimationsModule,
     ModalModule.forRoot(),
+    NgbModule,
+
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

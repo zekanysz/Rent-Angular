@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Movie } from 'src/app/interfaces/movie';
 import { Credits } from 'src/app/interfaces/credits';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
+import { PersonImages } from 'src/app/interfaces/person-images';
 
 @Component({
   selector: 'app-movie-details',
@@ -15,6 +16,8 @@ export class MovieDetailsComponent implements OnInit {
 
   @Input() movie: Movie;
   @Input() credits: Credits;
+  @Input() personImagesAll: Array<PersonImages>;
+
 
   posterImgUrl: string
   backImgUrl: string;
@@ -29,22 +32,21 @@ export class MovieDetailsComponent implements OnInit {
     let id = + this.route.snapshot.params['id'];
     let backBase = new String("https://image.tmdb.org/t/p/w1920_and_h800_multi_faces");
     let posterBase = new String("https://image.tmdb.org/t/p/w342");
-
+    let personImageBase = new String("https://image.tmdb.org/t/p/w185");
 
     this.movieService.getMovieById(id).subscribe(result => {
       this.movie = result;
-      console.log(result);
-      
       this.getTimeDifference(this.movie.runtime);
       this.backImgUrl = backBase.concat(this.movie.backdrop_path.toString());
       this.posterImgUrl = posterBase.concat(this.movie.poster_path.toString());
-
-      // this.background= this.sanitizer.bypassSecurityTrustStyle(`url(${base.concat(this.movie.backdrop_path.toString())}) no-repeat`);
     });
 
     this.movieService.getCreditsById(id).subscribe(result => {
       this.credits = result;
-      console.log(result);
+    });
+
+    this.movieService.getAllPersonImagesByMovieId(id).subscribe(result => {
+      this.personImagesAll = result;
     });
 
   }
@@ -55,7 +57,6 @@ export class MovieDetailsComponent implements OnInit {
     this.hour = hours;
     const minutes = timestampDifference - hours * 60;;
     this.minute = minutes
-    console.log(hours + 'h' + minutes + 'm');
   }
 
 }

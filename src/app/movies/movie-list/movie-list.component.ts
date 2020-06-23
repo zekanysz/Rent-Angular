@@ -31,12 +31,15 @@ export class MovieListComponent implements OnInit {
 
     this.movies$.subscribe(result => {
       this.movies = result;
-      console.log(this.movies);
     });
   }
 
   getMovies(){
-    this.movieService.getMovies();
+    this.movies$ = this.movieService.getMovies();
+
+    this.movies$.subscribe(result => {
+      this.movies = result;
+    });
   }
 
   select(movie: Movie){
@@ -44,12 +47,4 @@ export class MovieListComponent implements OnInit {
     this.router.navigateByUrl("/Movies/" + movie.id);
   }
 
-  // view(id){
-  //   this.modalRef = this.modalService.show(this.modal);
-  //   this.movie$ = this.movieService.getMovieByImdbId(id);
-  //   this.movie$.subscribe(result => {
-  //     this.movie = result;
-  //   });
-
-  // }
 }
