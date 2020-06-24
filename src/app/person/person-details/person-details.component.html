@@ -1,2 +1,21 @@
-<p>person-details works!</p>
-<p>{{personId}}</p>
+<div class="wrapper">
+    <div class="content">
+        <div class="grey-cloumn">
+            <img class="poster" src="https://image.tmdb.org/t/p/w185{{person.profile_path}}">
+        </div>
+        <div class="white-column">
+            <section>
+                <div class="title">
+                    <h2 class="title">{{person.name}}</h2>
+                </div>
+            </section>
+            <section>
+                <h3>Biography</h3>
+                <div>
+                    {{person.biography}}
+                </div>
+            </section>
+        </div>
+
+    </div>
+</div>

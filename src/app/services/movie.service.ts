@@ -6,6 +6,7 @@ import { Movie } from '../interfaces/movie';
 import { Credits } from '../interfaces/credits';
 import { shareReplay, flatMap, first } from 'rxjs/operators';
 import { PersonImages } from '../interfaces/person-images';
+import { PersonDetails } from '../interfaces/person-details';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,8 @@ export class MovieService {
   private getAllMoviesUrl = environment.apiUrl + '/Movie/AllMovies';
   private getAllCreditsUrl = environment.apiUrl + '/Movie/AllCredits';
   private getAllPersonImagesUrl = environment.apiUrl + '/Movie/AllPersonImagesByMovieId';
+  private getAllPersonDetailsUrl = environment.apiUrl + '/Movie/AllPersonDetailsByMovieId';
+
 
 
   private movies$: Observable<Movie[]>;
@@ -25,6 +28,8 @@ export class MovieService {
   private credits$: Observable<Credits>;
 
   private personeImagesAll$: Observable<PersonImages[]>;
+  private personDetailsAll$: Observable<PersonDetails[]>;
+
 
 
   constructor(private http: HttpClient) { }
@@ -61,6 +66,10 @@ export class MovieService {
     return this.personeImagesAll$;
   }
 
+  getAllPersonDetailsByMovieId(movieId: number) : Observable<PersonDetails[]>{
+    this.personDetailsAll$ = this.http.get<PersonDetails[]>(this.getAllPersonDetailsUrl+"/"+ movieId).pipe(shareReplay());
+  return this.personDetailsAll$;
+}
 
   get currentToken(){
     return this.movies$;

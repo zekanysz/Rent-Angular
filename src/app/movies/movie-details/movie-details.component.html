@@ -55,9 +55,9 @@
 <div class="container-fluid">
     <div class="row tap">
         <div *ngFor="let cast of credits.cast; index as i;">
-            <div *ngFor="let img of personImagesAll; index as j">
-                <div class=" card2" *ngIf="img.id == cast.id && img.profiles.length !== 0 && i < 10">
-                    <img class="poster" src="https://image.tmdb.org/t/p/w154{{img.profiles[0].file_path}}" (click)="select(img.id)">
+            <div *ngFor="let personDetails of personDetailsAll; index as j">
+                <div class=" card2" *ngIf="personDetails.id == cast.id && i < 10">
+                    <img class="poster" src="https://image.tmdb.org/t/p/w154{{personDetails.profile_path}}" (click)="select(personDetails)">
                     <p class="char title thick ">{{cast.name}}</p>
                     <p class="char">{{cast.character}}</p>
                 </div>
@@ -66,9 +66,7 @@
     </div>
 </div>
 
+<div class="margin">
 
-<p>sdgasdgasgd</p>
-
+</div>
 <hr>
-
-<p>sdgasdgasgd</p>

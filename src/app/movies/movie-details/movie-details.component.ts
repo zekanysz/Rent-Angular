@@ -5,6 +5,7 @@ import { Movie } from 'src/app/interfaces/movie';
 import { Credits } from 'src/app/interfaces/credits';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 import { PersonImages } from 'src/app/interfaces/person-images';
+import { PersonDetails } from 'src/app/interfaces/person-details';
 
 @Component({
   selector: 'app-movie-details',
@@ -17,6 +18,8 @@ export class MovieDetailsComponent implements OnInit {
   @Input() movie: Movie;
   @Input() credits: Credits;
   @Input() personImagesAll: Array<PersonImages>;
+  @Input() personDetailsAll: Array<PersonDetails>;
+
 
 
   posterImgUrl: string
@@ -49,6 +52,10 @@ export class MovieDetailsComponent implements OnInit {
       this.personImagesAll = result;
     });
 
+    this.movieService.getAllPersonDetailsByMovieId(id).subscribe(result => {
+      this.personDetailsAll = result;
+    });
+
   }
 
   getTimeDifference(timestampDifference) {
@@ -59,8 +66,8 @@ export class MovieDetailsComponent implements OnInit {
     this.minute = minutes
   }
 
-  select(personId: number){
-    this.router.navigateByUrl("/Person/" + personId);
+  select(person: PersonDetails){
+    this.router.navigateByUrl("/Person/" + person.id);
   }
 
 }

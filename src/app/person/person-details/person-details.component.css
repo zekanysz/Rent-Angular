@@ -1,0 +1,42 @@
+.wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+
+.content {
+    max-width: 1300px;
+    width: 100vw;
+    display: flex;
+    align-items: flex-start;
+    align-content: flex-start;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.grey-column {
+    min-width: 260px;
+    width: 260px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.white-column {
+    background-color: #fff;
+    max-width: 960px;
+    width: calc(100vw - 80px - 260px);
+    display: flex;
+    flex-wrap: wrap;
+    flex: 0 1 auto;
+    padding-right: 30px;
+    padding-right: 0;
+    padding-left: 30px;
+}
+
+.title {
+    width: 100%;
+}

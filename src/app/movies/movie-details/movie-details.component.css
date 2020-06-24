@@ -253,7 +253,7 @@ ul {
     /* font-size:  105% */
 }
 
-.card2>div>div>div>img {
+.card2>div>div>img {
     margin-bottom: .75rem;
 }
 
@@ -294,4 +294,6 @@ hr {
     margin-right: auto;
     border-style: inset;
     border-width: 1px;
+    margin-top: 100px;
+    margin-bottom: 60px;
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
+import { PersonDetails } from 'src/app/interfaces/person-details';
+import { PersonService } from 'src/app/services/person.service';
 
 @Component({
   selector: 'app-person-details',
@@ -9,13 +11,18 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class PersonDetailsComponent implements OnInit {
 
-  @Input() personId:number;
+  @Input() person:PersonDetails;
+  id: number;
 
-  constructor(private route: ActivatedRoute, private router: Router, private sanitizer: DomSanitizer) { }
+  constructor(private personService: PersonService, private route: ActivatedRoute, private router: Router, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     let id = + this.route.snapshot.params['id'];
-    this.personId = id;
-  }
+    this.id = id;
 
+    this.personService.getPersonDetailsById(id).subscribe(result => {
+      this.person = result;
+    });
+
+  }
 }
