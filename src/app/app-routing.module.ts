@@ -14,6 +14,7 @@ const routes: Routes = [];
   { path: 'Home', component: HomeComponent },
   { path: '', component: HomeComponent, pathMatch: 'full'},
   { path: 'Movies', loadChildren: () => import ('./movies/movies.module').then(m => m.MoviesModule)},
+  { path: 'Person', loadChildren: () => import ('./person/person.module').then(m => m.PersonModule)},
   { path: 'Login', component: LoginComponent },
   { path: 'Register', component:  RegisterComponent },
   { path: 'ManageMovies', component:  ManageMoviesComponent },

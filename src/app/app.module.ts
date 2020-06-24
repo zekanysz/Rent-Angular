@@ -17,9 +17,6 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +35,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserAnimationsModule,
     ModalModule.forRoot(),
     NgbModule,
-
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

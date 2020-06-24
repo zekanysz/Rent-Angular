@@ -59,4 +59,8 @@ export class MovieDetailsComponent implements OnInit {
     this.minute = minutes
   }
 
+  select(personId: number){
+    this.router.navigateByUrl("/Person/" + personId);
+  }
+
 }
