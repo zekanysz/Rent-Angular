@@ -1,7 +1,7 @@
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav style="background-color:	#2072b2 !important;" class="navbar navbar-expand-lg navbar-light bg-light">
 
-        <a class="navbar-brand" href="#">Smdb</a>
+        <a class="navbar-brand text-white" href="#">Smdb</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -9,44 +9,44 @@
         <div class="collapse navbar-collapse d-sm-inline-flex flex-sm-row-reverse">
             <ul class="navbar-nav flex-grow-2">
                 <li class="nav-item" *ngIf="loginStatus$ | async">
-                    <a class="nav-link text-dark" [routerLink]='["/"]'>Home</a>
+                    <a class="nav-link text-white" [routerLink]='["/"]'>Home</a>
                 </li>
 
                 <li class="nav-item" *ngIf="loginStatus$ | async">
-                    <a class="nav-link text-dark" [routerLink]='["/Movies"]'>Movies</a>
+                    <a class="nav-link text-white" [routerLink]='["/Movies"]'>Movies</a>
                 </li>
 
 
                 <li class="nav-item" *ngIf="loginStatus$ | async">
-                    <a class="nav-link text-dark" [routerLink]='["/Person"]'>Person</a>
+                    <a class="nav-link text-white" [routerLink]='["/Person"]'>Person</a>
                 </li>
 
                 <li class="nav-item" *ngIf="!(loginStatus$ | async)">
-                    <a class="nav-link text-dark" [routerLink]='["/Login"]'>Login</a>
+                    <a class="nav-link text-white" [routerLink]='["/Login"]'>Login</a>
                 </li>
 
                 <li class="nav-item" *ngIf="!(loginStatus$ | async)">
-                    <a class="nav-link text-dark" [routerLink]='["/Register"]'>Register</a>
+                    <a class="nav-link text-white" [routerLink]='["/Register"]'>Register</a>
                 </li>
 
                 <ng-container *ngIf="loginStatus$ | async">
                     <li class="nav-item" *ngIf="isAdmin$ | async">
-                        <a class="nav-link text-dark" [routerLink]='["/ManageMovies"]'>MMovies</a>
+                        <a style="color: white;" class="nav-link text-white" [routerLink]='["/ManageMovies"]'>MMovies</a>
                     </li>
                 </ng-container>
 
                 <ng-container *ngIf="loginStatus$ | async">
                     <li class="nav-item" *ngIf="isAdmin$ | async">
-                        <a class="nav-link text-dark" [routerLink]='["/ManageUsers"]'>MUsers</a>
+                        <a class="nav-link text-white" [routerLink]='["/ManageUsers"]'>MUsers</a>
                     </li>
                 </ng-container>
 
                 <li class="nav-item" *ngIf="loginStatus$ | async">
-                    <a class="nav-link text-dark" *ngIf="(userName$ | async) as userName">{{userName}}</a>
+                    <a class="nav-link text-white" *ngIf="(userName$ | async) as userName">{{userName}}</a>
                 </li>
 
                 <li class="nav-item" *ngIf="loginStatus$ | async">
-                    <a class="btn btn-primary text-white" (click)="logout()">Logout</a>
+                    <a style="background-color: white;" class="btn btn-primary text-dark" (click)="logout()">Logout</a>
                 </li>
             </ul>
         </div>

@@ -1,4 +1,4 @@
-<div class="wrapper">
+<!-- <div class="wrapper">
     <div class="content">
         <div class="grey-cloumn">
             <img class="poster" src="https://image.tmdb.org/t/p/w185{{person.profile_path}}">
@@ -17,5 +17,77 @@
             </section>
         </div>
 
+    </div>
+</div> -->
+<div class="container">
+    <div class="row">
+        <div class="column1">
+            <div class="poster">
+                <img class="" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{person.profile_path}}">
+            </div>
+            <div class="pad">
+                <h3 class="p-info">Personal Info</h3>
+                <section>
+                    <p>
+                        <strong>
+                            <bdi>Known For</bdi>
+                        </strong>
+                        <span>{{person.known_for_department}}</span>
+                    </p>
+
+                    <p>
+                        <strong>
+                            <bdi>Gender</bdi>
+                        </strong>
+                        <span ngSwitch="{{person.gender}}">
+                            <span *ngSwitchCase="'2'" >Male</span><span *ngSwitchCase="'1'">Female</span>
+                        </span>
+                    </p>
+
+                    <p>
+                        <strong>
+                            <bdi>Known For</bdi>
+                        </strong>
+                        <span>{{person.known_for_department}}</span>
+                    </p>
+
+                    <p>
+                        <strong>
+                            <bdi>Birthday</bdi>
+                        </strong>
+                        <span>{{person.birthday | date}}</span>
+                    </p>
+
+                    <p>
+                        <strong>
+                            <bdi>Place of Birth</bdi>
+                        </strong>
+                        <span>{{person.place_of_birth}}</span>
+                    </p>
+
+                    <p>
+                        <strong>
+                            <bdi>Also Known As</bdi>
+                        </strong>
+                        <span *ngFor="let also of person.also_known_as">{{also}}<br>
+                        </span>
+                    </p>
+                </section>
+            </div>
+        </div>
+        <div class="column2">
+            <h2>{{person.name}}</h2>
+
+            <!-- <div *ngFor="let bio of biography; index as i">
+                <p>{{bio}}</p>
+            </div> -->
+            <p>{{person.biography}}</p>
+
+            <div class="sidebar-box">
+                <p>malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies
+                    eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+                <p class="read-more"><a href="" class="button">Read More</a></p>
+            </div>
+        </div>
     </div>
 </div>
