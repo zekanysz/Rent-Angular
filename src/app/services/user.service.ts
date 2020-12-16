@@ -20,7 +20,8 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   addRole(role){
-    return  this.http.post(this.addRolePathUrl + role, null);
+    console.log(this.addRolePathUrl + role);
+    return  this.http.post(this.addRolePathUrl + role, null).subscribe();
   }
 
   addRoleToUser(userToRole){
